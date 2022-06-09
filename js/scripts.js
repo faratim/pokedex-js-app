@@ -1,6 +1,7 @@
-// Alert pops up saying Hello world
-alert('Hello world');
-
-// index.html document shows my favorite food
-let favoriteFood = "Pizza";
-document.write(favoriteFood);
+// Initial List of Pokemon
+let pokemonList = [
+  {name: 'Bulbasaur', height: 7, types: ['grass', 'poison']};
+  {name: 'Ivysaur', height: 10, types: ['grass', 'poison']};
+  {name: 'Venusaur', height: 20, types: ['grass', 'poison']};
+  {name: 'Pikachu', height: 4, types: ['electric']};
+];
