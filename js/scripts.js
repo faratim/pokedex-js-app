@@ -9,11 +9,12 @@ let pokemonList = [
 // Writes all Pokemon in pokemonList to the DOM, includes message if Pokemon is over 1.2 in height
 let bigPokemon = " - Wow, that's big!"
 
-for (i = 0; i < pokemonList.length; i++) {
-  if (pokemonList[i].height < 1.2) {
-    document.write('<p>' + pokemonList[i].name + " (height: " + pokemonList[i].height + ")" + '</p>')
+
+// Using forEach to iterate instead of for Loop
+pokemonList.forEach(function(item) {
+  if (item.height <= 1.2) {
+    document.write('<p>' + item.name + " (height: " + item.height + ")" + '</p>');
+  } else {
+    document.write('<p>' + item.name + " (height: " + item.height + ")" + bigPokemon + '</p>');
   }
-  if (pokemonList[i].height >1.2) {
-    document.write('<p>' + pokemonList[i].name + " (height: " + pokemonList[i].height + ")" + bigPokemon + '</p>')
-  }
-}
+});
