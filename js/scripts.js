@@ -6,6 +6,7 @@ let pokemonRepository = (function() {
     {name: 'Venusaur', height: 2.0, types: ['grass', 'poison']},
   ];
 
+  //Function that allows you to add pokemon to the Pokedex and validates it's the right input type
   function add(pokemon) {
     if (typeof pokemon === 'object' &&
       !Array.isArray(pokemon) &&
@@ -20,10 +21,12 @@ let pokemonRepository = (function() {
 
   }
 
+  //Gets all objects from the pokemonList Array
   function getAll() {
     return pokemonList;
   }
 
+  //Filters by Pokemon name and returns the object of any matching Pokemon
   function filterPokemon(nameToFilter) {
     thesePokemon = pokemonList.filter(filteredPokemon => filteredPokemon.name === nameToFilter);
     return thesePokemon;
@@ -37,22 +40,30 @@ let pokemonRepository = (function() {
 
 })();
 
+//Testing validation (not an object)
 pokemonRepository.add("Pikachu");
+
+//Testing validation (undefined);
 pokemonRepository.add();
+
+//Testing validation (not all Object.keys are included)
 pokemonRepository.add( {
   name: 'Pikachu',
   height: 0.7,
 } );
+
+//Testing validation and adding this Pokemon since it's the correct data type
 pokemonRepository.add( {
   name: 'Pikachu',
   height: 0.7,
   types: ['electric']
 } );
 
+//Filters by Pokemon name and returns array that matches Pokemon name
 pokemonRepository.filterPokemon('Bulbasaur');
 console.log(thesePokemon);
 
-// Writes all Pokemon in pokemonList to the DOM, includes message if Pokemon is over 1.2 in height
+// Writes all Pokemon in pokemonList to the DOM; includes message if Pokemon is over 1.2 in height
 let bigPokemon = " - Wow, that's big!"
 
 pokemonRepository.getAll().forEach(function(item) {
