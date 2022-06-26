@@ -1,5 +1,17 @@
+/* COLOR SCHEME
+Primary Color: #ffde00;
+Secondary Color: #3b4cca;
+Light Red: #FF0000;
+Dark Red: #CC0000;
+Gold: #b3a125;
+*/
+
 body {
   font-family: "Montserrat"", sans-serif";
+}
+
+main {
+  text-align: center;
 }
 
 p {
@@ -8,8 +20,12 @@ p {
   line-height: 2;
 }
 
+ul {
+  list-style: none;
+}
+
 #topNav {
-  background-color: #ffcb05;
+  background-color: #ffde00;
   height: 60px;
   padding: 0 10px;
   width: 100%;
@@ -33,4 +49,13 @@ p {
 .nav-link {
   font-size: 1.2rem;
   font-weight: 300;
+}
+
+.button-styling {
+  background-color: #ffde00;
+  color: #3b4cca;
+  margin-top: 10px;
+  padding: 10px;
+  width: 40%;
+  font-weight: bolder;
 }

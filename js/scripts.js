@@ -1,43 +1,72 @@
 // IIFE that returns 'add' and 'getAll' to pokemonRepository
-let pokemonRepository = (function() {
-  let pokemonList = [
-    {name: 'Bulbasaur', height: 0.7, types: ['grass', 'poison']},
-    {name: 'Ivysaur', height: 1.0, types: ['grass', 'poison']},
-    {name: 'Venusaur', height: 2.0, types: ['grass', 'poison']},
+let pokemonRepository = (function () {
+  let repository = [
+    { name: "Bulbasaur", height: 0.7, types: ["grass", "poison"] },
+    { name: "Ivysaur", height: 1.0, types: ["grass", "poison"] },
+    { name: "Venusaur", height: 2.0, types: ["grass", "poison"] },
   ];
 
   //Function that allows you to add pokemon to the Pokedex and validates it's the right input type
   function add(pokemon) {
-    if (typeof pokemon === 'object' &&
+    if (
+      typeof pokemon === "object" &&
       !Array.isArray(pokemon) &&
       pokemon !== null &&
-      Object.keys(pokemonList[0]).every(key => key in pokemon)
-)   {
-      pokemonList.push(pokemon);
-      console.log("Your Pokemon was successfully added!")
+      Object.keys(repository[0]).every((key) => key in pokemon)
+    ) {
+      repository.push(pokemon);
+      console.log("Your Pokemon was successfully added!");
     } else {
-      console.log("The Pokemon you tried to add is not in the correct format. Please add an object with name: , height: , and types: ")
+      console.log(
+        "The Pokemon you tried to add is not in the correct format. Please add an object with name: , height: , and types: "
+      );
     }
-
   }
 
-  //Gets all objects from the pokemonList Array
+  //Gets all objects from the repository Array
   function getAll() {
-    return pokemonList;
+    return repository;
   }
 
   //Filters by Pokemon name and returns the object of any matching Pokemon
   function filterPokemon(nameToFilter) {
-    thesePokemon = pokemonList.filter(filteredPokemon => filteredPokemon.name === nameToFilter);
+    thesePokemon = repository.filter(
+      (filteredPokemon) => filteredPokemon.name === nameToFilter
+    );
     return thesePokemon;
+  }
+
+  //Creates a list item and button for each Pokemon in the repository
+  function addListItem(pokemon) {
+    let pokemonList = document.querySelector(".pokemon-list");
+    let listItem = document.createElement("li");
+    let button = document.createElement("button");
+    //Create a button with each Pokemon name, add button-styling class, append button to list of Pokemon
+    button.innerText = pokemon.name;
+    button.classList.add("button-styling");
+    listItem.appendChild(button);
+    pokemonList.appendChild(listItem);
+    //Run buttonClick function to log the Pokemon that's clicked on
+    buttonClick(button, pokemon);
+  }
+
+  function buttonClick(button, pokemon) {
+    button.addEventListener("click", function () {
+      showDetails(pokemon);
+    });
+  }
+
+  //Logs the name of the clicked Pokemon to the console
+  function showDetails(pokemon) {
+    console.log(pokemon.name);
   }
 
   return {
     add: add,
     getAll: getAll,
-    filterPokemon: filterPokemon
+    filterPokemon: filterPokemon,
+    addListItem: addListItem,
   };
-
 })();
 
 //Testing validation (not an object)
@@ -47,29 +76,24 @@ pokemonRepository.add("Pikachu");
 pokemonRepository.add();
 
 //Testing validation (not all Object.keys are included)
-pokemonRepository.add( {
-  name: 'Pikachu',
+pokemonRepository.add({
+  name: "Pikachu",
   height: 0.7,
-} );
+});
 
 //Testing validation and adding this Pokemon since it's the correct data type
-pokemonRepository.add( {
-  name: 'Pikachu',
+pokemonRepository.add({
+  name: "Pikachu",
   height: 0.7,
-  types: ['electric']
-} );
+  types: ["electric"],
+});
 
 //Filters by Pokemon name and returns array that matches Pokemon name
-pokemonRepository.filterPokemon('Bulbasaur');
+pokemonRepository.filterPokemon("Bulbasaur");
 console.log(thesePokemon);
 
-// Writes all Pokemon in pokemonList to the DOM; includes message if Pokemon is over 1.2 in height
-let bigPokemon = " - Wow, that's big!"
-
-pokemonRepository.getAll().forEach(function(item) {
-  if (item.height <= 1.2) {
-    document.write('<p>' + item.name + " (height: " + item.height + ")" + '</p>');
-  } else {
-    document.write('<p>' + item.name + " (height: " + item.height + ")" + bigPokemon + '</p>');
-  }
+// Creates a list item and button for every Pokemon by iterating on the addListItem function
+// let bigPokemon = " - Wow, that's big!";
+pokemonRepository.getAll().forEach(function (pokemon) {
+  pokemonRepository.addListItem(pokemon);
 });
