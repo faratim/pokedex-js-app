@@ -1,20 +1,12 @@
-// IIFE that returns 'add' and 'getAll' to pokemonRepository
+// IIFE that contains functions for creating the Pokemon list
 let pokemonRepository = (function () {
-  let repository = [
-    { name: "Bulbasaur", height: 0.7, types: ["grass", "poison"] },
-    { name: "Ivysaur", height: 1.0, types: ["grass", "poison"] },
-    { name: "Venusaur", height: 2.0, types: ["grass", "poison"] },
-  ];
+  let pokemonList = [];
+  let apiUrl = "https://pokeapi.co/api/v2/pokemon/?limit=150";
 
   //Function that allows you to add pokemon to the Pokedex and validates it's the right input type
   function add(pokemon) {
-    if (
-      typeof pokemon === "object" &&
-      !Array.isArray(pokemon) &&
-      pokemon !== null &&
-      Object.keys(repository[0]).every((key) => key in pokemon)
-    ) {
-      repository.push(pokemon);
+    if (typeof pokemon === "object" && "name" in pokemon) {
+      pokemonList.push(pokemon);
       console.log("Your Pokemon was successfully added!");
     } else {
       console.log(
@@ -23,9 +15,9 @@ let pokemonRepository = (function () {
     }
   }
 
-  //Gets all objects from the repository Array
+  //Gets all objects from the pokemonList Array
   function getAll() {
-    return repository;
+    return pokemonList;
   }
 
   //Filters by Pokemon name and returns the object of any matching Pokemon
@@ -46,54 +38,94 @@ let pokemonRepository = (function () {
     button.classList.add("button-styling");
     listItem.appendChild(button);
     pokemonList.appendChild(listItem);
-    //Run buttonClick function to log the Pokemon that's clicked on
-    buttonClick(button, pokemon);
-  }
-
-  function buttonClick(button, pokemon) {
-    button.addEventListener("click", function () {
+    //Event listener to log details of the Pokemon that's clicked on
+    button.addEventListener("click", function (event) {
       showDetails(pokemon);
     });
   }
 
-  //Logs the name of the clicked Pokemon to the console
-  function showDetails(pokemon) {
-    console.log(pokemon.name);
+  // Loads list of Pokemon names and URLs from the Pokemon API
+  function loadList() {
+    return fetch(apiUrl)
+      .then(function (response) {
+        return response.json();
+      })
+      .then(function (json) {
+        json.results.forEach(function (item) {
+          let pokemon = {
+            name: item.name,
+            detailsUrl: item.url,
+          };
+          addListItem(pokemon);
+        });
+      })
+      .catch(function (e) {
+        console.error(e);
+      });
   }
 
+  //Loads additional details of Pokemon from API
+  function loadDetails(item) {
+    let url = item.detailsUrl;
+    return fetch(url)
+      .then(function (response) {
+        return response.json();
+      })
+      .then(function (details) {
+        item.imageUrl = details.sprites.front_default;
+        item.height = details.height;
+        item.types = details.types;
+      })
+      .catch(function (e) {
+        console.error(e);
+      });
+  }
+
+  //Logs the details of the clicked Pokemon to the console
+  function showDetails(item) {
+    loadDetails(item).then(function () {
+      console.log(item);
+    });
+  }
+
+  // Returns all functions to be used outside of IIFE
   return {
     add: add,
     getAll: getAll,
     filterPokemon: filterPokemon,
     addListItem: addListItem,
+    loadList: loadList,
+    loadDetails: loadDetails,
+    showDetails: showDetails,
   };
 })();
 
-//Testing validation (not an object)
-pokemonRepository.add("Pikachu");
+// //Testing validation (not an object)
+// pokemonRepository.add("Pikachu");
 
-//Testing validation (undefined);
-pokemonRepository.add();
+// //Testing validation (undefined);
+// pokemonRepository.add();
 
-//Testing validation (not all Object.keys are included)
-pokemonRepository.add({
-  name: "Pikachu",
-  height: 0.7,
-});
+// //Testing validation (not all Object.keys are included)
+// pokemonRepository.add({
+//   name: "Pikachu",
+//   height: 0.7,
+// });
 
 //Testing validation and adding this Pokemon since it's the correct data type
-pokemonRepository.add({
-  name: "Pikachu",
-  height: 0.7,
-  types: ["electric"],
-});
+// pokemonRepository.add({
+//   name: "Pikachu",
+//   height: 0.7,
+//   types: ["electric"],
+// });
 
 //Filters by Pokemon name and returns array that matches Pokemon name
-pokemonRepository.filterPokemon("Bulbasaur");
-console.log(thesePokemon);
+// pokemonRepository.filterPokemon("Bulbasaur");
+// console.log(thesePokemon);
 
-// Creates a list item and button for every Pokemon by iterating on the addListItem function
-// let bigPokemon = " - Wow, that's big!";
-pokemonRepository.getAll().forEach(function (pokemon) {
-  pokemonRepository.addListItem(pokemon);
+//Function calls to load list of Pokemon from API, create button for each, and listen for clicks to log details
+pokemonRepository.loadList().then(function () {
+  pokemonRepository.getAll().forEach(function (pokemon) {
+    pokemonRepository.addListItem(pokemon);
+  });
 });
