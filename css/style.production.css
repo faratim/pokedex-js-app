@@ -1,10 +1,20 @@
+/*
+* Prefixed by https://autoprefixer.github.io
+* PostCSS: v8.4.14,
+* Autoprefixer: v10.4.7
+* Browsers: last 2 version
+*/
+
 * {
+    -webkit-box-sizing: border-box;
     box-sizing: border-box;
     font-family: 'Lato', sans-serif;
 }
 
 header {
+    display: -ms-grid;
     display: grid;
+    -ms-grid-columns: 10fr 1fr 1fr;
     grid-template-columns: 10fr 1fr 1fr;
     min-height: 10vh;
     border-bottom: 2px solid black;
@@ -24,6 +34,7 @@ header {
 .modal {
     margin: auto;
     margin-top: 15%;
+    -webkit-box-sizing: border-box;
     box-sizing: border-box;
     background: #fff;
     padding: 5px;
@@ -59,6 +70,7 @@ header {
     display: block;
     position: fixed;
     padding: 20px;
+    -webkit-box-sizing: border-box;
     box-sizing: border-box;
     top: 0;
     left: 0;
@@ -69,6 +81,18 @@ header {
     overflow: auto;
     text-align: center;
 }
+/* 
+@media (min-width: 35rem) {
+    .modal {
+        max-width: 2%;
+    }
+} */
+
+@media (min-width: 700px) {
+    .modal {
+        max-width: 40%;
+    }
+}
 
 .list-container {
     display: grid;
@@ -76,7 +100,9 @@ header {
 }
 
 .pokemon-list {
+    display: -ms-grid;
     display: grid;
+    padding-inline-start: 0;
     gap: 10px 55px;
     text-align: center;
     list-style-type: none;
@@ -102,14 +128,17 @@ header {
 }
 
 .selected-button {
-    border: 3px solid #800080;
+    width: 70%;
+    border: 2px solid #57acf9;
     cursor: pointer;
     padding: 2%;
     margin: 0;
 }
 
-.selected-button:hover {
-    background-color: #c1c1c1;
+@media (min-width: 40rem) {
+    .selected-button {
+        max-width: 30%;
+    }
 }
 
 title {
