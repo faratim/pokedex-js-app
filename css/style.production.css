@@ -5,176 +5,19 @@
 * Browsers: last 4 version
 */
 
-* {
-    -webkit-box-sizing: border-box;
-    box-sizing: border-box;
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 500;
+/* Nav Styling */
+.nav-header {
+    font-weight: 600;
+    font-size: 2rem;
 }
 
-body {
-    margin: 0;
-}
-
-header {
-    display: -ms-grid;
-    display: grid;
-    -ms-grid-columns: 10fr 1fr 1fr;
-    grid-template-columns: 10fr 1fr 1fr;
-    min-height: 10vh;
-    border-bottom: 2px solid #ffcb05;
-    background-color: #3466af;
-    -webkit-box-align: center;
-    -ms-flex-align: center;
-    align-items: center;
-    padding-left: 10px;
-    color: #ffcb05;
-}
-
-h1 {
-    font-weight: 700;
-}
-
-.loading-message {
-    position: absolute;
-    top: 11%;
-    left: 43%;
-    color: rgba(0, 0, 0, 0);
-    font-size: 20px;
-    text-align: center;
-    font-weight: bold;
-    padding-left: 5%;
-}
-
-.modal {
-    margin: auto;
-    margin-top: 15%;
-    -webkit-box-sizing: border-box;
-    box-sizing: border-box;
-    background: #fff;
-    padding: 5px;
-    width: 20%;
-    max-width: 700px;
-    text-align: center;
-
-    border-radius: 1em;
-    border: 2px solid #ffcb05;
-    background-color: rgba(52, 102, 175, 0.8);
-    -webkit-backdrop-filter: blur(4px);
-    backdrop-filter: blur(4px);
-    color: white;
-}
-
-.modal h1 {
-    padding-left: 0.75em;
-}
-
-.modal-close {
-    float: right;
-    cursor: pointer;
-    font-size: x-large;
-    -webkit-appearance: none;
-    border: 0;
-    background: none;
-    color: #777;
-}
-
-.modal-close:hover {
-    background-color: #ff8181;
-    border-radius: 50%;
-}
-
-#modal-container {
-    display: none;
-}
-
-#modal-container.is-visible {
-    display: block;
-    position: fixed;
-    padding: 20px;
-    -webkit-box-sizing: border-box;
-    box-sizing: border-box;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.5);
-    z-index: 999;
-    overflow: auto;
-    text-align: center;
-}
-
-@media (min-width: 700px) {
-    .modal {
-        max-width: 40%;
-    }
-}
-
-.list-container {
-    display: -ms-grid;
-    display: grid;
-    -ms-grid-columns: 1fr 5fr 1fr;
-    grid-template-columns: 1fr 5fr 1fr;
-}
-
-.list-column {
-    background-color: rgba(52, 102, 175, 0.2);
-}
-
+/* List of Pokemon/Button Styling */
 .pokemon-list {
-    display: -ms-grid;
-    display: grid;
-    -webkit-padding-start: 0;
-    padding-inline-start: 0;
     gap: 10px 55px;
     text-align: center;
     list-style-type: none;
     margin-top: 50px;
-}
-
-.search-icon {
-    display: -ms-grid;
-    display: grid;
-    cursor: pointer;
-    margin: 5px;
-    aspect-ratio: 1;
-    -webkit-box-align: center;
-    -ms-flex-align: center;
-    align-items: center;
-    justify-items: center;
-    max-height: 50px;
-}
-
-.search-icon img {
-    -o-object-fit: cover;
-    object-fit: cover;
-    aspect-ratio: 1;
-    max-width: 70%;
-    max-height: 40px;
-}
-
-.search-icon:hover {
-    background-color: #ffcb05;
-    border-radius: 50%;
-    display: -ms-grid;
-    display: grid;
-    cursor: pointer;
-    margin: 5px;
-    aspect-ratio: 1;
-    -webkit-box-align: center;
-    -ms-flex-align: center;
-    align-items: center;
-    justify-items: center;
-    max-height: 50px;
-}
-
-.search-query {
-    margin: 2em auto;
-}
-
-.input {
-    margin-right: 3px;
-    padding-right: 3px;
+    padding: 0;
 }
 
 .selected-button {
@@ -185,7 +28,6 @@ h1 {
     margin: 0;
     border-radius: 0.6em;
 }
-
 .selected-button:hover {
     width: 70%;
     border: 2px solid #ffcb05;
@@ -195,43 +37,29 @@ h1 {
     border-radius: 0.6em;
 }
 
-@media (min-width: 40rem) {
-    .selected-button {
-        max-width: 30%;
-    }
+.list-container {
+    display: -ms-grid;
+    display: grid;
+    -ms-grid-columns: 1fr 5fr 1fr;
+    grid-template-columns: 1fr 5fr 1fr;
 }
 
-title {
-    display: none;
-}
+/* Modal Styling */
+.modal-content {
+    margin: auto;
+    display: inline-block;
+    margin-top: 15%;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    background: #fff;
+    padding: 5px;
+    max-width: 600px;
+    text-align: center;
 
-.visible-on {
-    color: rgba(255, 0, 0, 255);
-}
-
-@media all and (max-width: 330px) {
-    .modal h1 {
-        font-size: small;
-    }
-
-    header {
-        display: block;
-    }
-
-    header h1 {
-        font-size: small;
-        max-height: 5px;
-    }
-}
-
-@media all and (min-width: 330px) and (max-width: 400px) {
-    .modal h1 {
-        font-size: medium;
-    }
-}
-
-@media all and (max-width: 1300px) {
-    .modal {
-        width: 100%;
-    }
+    border-radius: 1em;
+    border: 2px solid #ffcb05;
+    background-color: rgba(52, 102, 175, 0.8);
+    -webkit-backdrop-filter: blur(4px);
+    backdrop-filter: blur(4px);
+    color: white;
 }

@@ -1,148 +1,58 @@
-* {
-    box-sizing: border-box;
-    font-family: 'Lato', sans-serif;
+/* Nav Styling */
+.nav-header {
+    font-weight: 600;
+    font-size: 2rem;
 }
 
-header {
-    display: grid;
-    grid-template-columns: 10fr 1fr 1fr;
-    min-height: 10vh;
-    border-bottom: 2px solid black;
-}
-
-.loading-message {
-    position: absolute;
-    top: 11%;
-    left: 43%;
-    color: rgba(0, 0, 0, 0);
-    font-size: 20px;
-    text-align: center;
-    font-weight: bold;
-    padding-left: 5%;
-}
-
-.modal {
-    margin: auto;
-    margin-top: 15%;
-    box-sizing: border-box;
-    background: #fff;
-    padding: 5px;
-    width: 20%;
-    max-width: 700px;
-    text-align: center;
-}
-
-.modal h1 {
-    padding-left: 0.75em;
-}
-
-.modal-close {
-    float: right;
-    cursor: pointer;
-    font-size: x-large;
-    -webkit-appearance: none;
-    border: 0;
-    background: none;
-    color: #777;
-}
-
-.modal-close:hover {
-    background-color: #ff8181;
-    border-radius: 50%;
-}
-
-#modal-container {
-    display: none;
-}
-
-#modal-container.is-visible {
-    display: block;
-    position: fixed;
-    padding: 20px;
-    box-sizing: border-box;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.5);
-    z-index: 999;
-    overflow: auto;
-    text-align: center;
-}
-
-.list-container {
-    display: grid;
-    grid-template-columns: 1fr 5fr;
-}
-
+/* List of Pokemon/Button Styling */
 .pokemon-list {
-    display: grid;
     gap: 10px 55px;
     text-align: center;
     list-style-type: none;
     margin-top: 50px;
-}
-
-.search-icon {
-    cursor: pointer;
-}
-
-.search-icon img {
-    background-color: #f4f4f4;
-    border-radius: 30%;
-}
-
-.search-icon img:hover {
-    background-color: #e8e8e8;
-    border-radius: 30%;
-}
-
-.search-query {
-    margin: 2em auto;
+    padding: 0;
 }
 
 .selected-button {
-    border: 3px solid #800080;
+    width: 70%;
+    border: 2px solid #3466af;
     cursor: pointer;
     padding: 2%;
     margin: 0;
+    border-radius: 0.6em;
 }
-
 .selected-button:hover {
-    background-color: #c1c1c1;
+    width: 70%;
+    border: 2px solid #ffcb05;
+    cursor: pointer;
+    padding: 2%;
+    margin: 0;
+    border-radius: 0.6em;
 }
 
-title {
-    display: none;
+.list-container {
+    display: -ms-grid;
+    display: grid;
+    -ms-grid-columns: 1fr 5fr 1fr;
+    grid-template-columns: 1fr 5fr 1fr;
 }
 
-.visible-on {
-    color: rgba(255, 0, 0, 255);
-}
+/* Modal Styling */
+.modal-content {
+    margin: auto;
+    display: inline-block;
+    margin-top: 15%;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    background: #fff;
+    padding: 5px;
+    max-width: 600px;
+    text-align: center;
 
-@media all and (max-width: 330px) {
-    .modal h1 {
-        font-size: small;
-    }
-
-    header {
-        display: block;
-    }
-
-    header h1 {
-        font-size: small;
-        max-height: 5px;
-    }
-}
-
-@media all and (min-width: 330px) and (max-width: 400px) {
-    .modal h1 {
-        font-size: medium;
-    }
-}
-
-@media all and (max-width: 1300px) {
-    .modal {
-        width: 100%;
-    }
+    border-radius: 1em;
+    border: 2px solid #ffcb05;
+    background-color: rgba(52, 102, 175, 0.8);
+    -webkit-backdrop-filter: blur(4px);
+    backdrop-filter: blur(4px);
+    color: white;
 }
