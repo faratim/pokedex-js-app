@@ -5,7 +5,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-        <!-- Google Fonts -->
+        <!-- GOOGLE FONTS -->
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
         <link
@@ -13,7 +13,7 @@
             rel="stylesheet"
         />
 
-        <!-- Bootstrap CSS -->
+        <!-- BOOTSTRAP CSS -->
         <link
             rel="stylesheet"
             href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
@@ -21,24 +21,26 @@
             crossorigin="anonymous"
         />
 
-        <!-- Custom CSS -->
+        <!-- CUSTOM CSS -->
         <link rel="stylesheet" type="text/css" href="css/style.production.css" />
 
         <title>Pokédex</title>
     </head>
 
     <body>
+        <!-- NAVBAR -->
         <nav class="navbar navbar-dark bg-primary">
             <a class="navbar-brand nav-header" href="index.html">Pokédex</a>
         </nav>
 
+        <!-- CONTAINER FOR POKEMON BUTTONS -->
         <div class="list-container">
             <div class="list-column col-sm"></div>
             <ul class="pokemon-list list-group col-lg"></ul>
             <div class="list-column col-sm"></div>
         </div>
 
-        <!-- Modal -->
+        <!-- MODAL -->
         <div class="modal fade modal-container" id="pokemon-modal" tabindex="-1" role="dialog" aria-hidden="true">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
@@ -56,7 +58,7 @@
             </div>
         </div>
 
-        <!-- SCRIPTS -->
+        <!--------- SCRIPTS --------->
         <!-- jQuery -->
         <script
             src="https://code.jquery.com/jquery-3.6.0.min.js"
@@ -76,7 +78,7 @@
             crossorigin="anonymous"
         ></script>
 
-        <!-- Polyfills -->
+        <!-- Polyfills - Promises and Fetch -->
         <script src="js/promise-polyfill.js"></script>
         <script src="js/fetch-polyfill.js"></script>
 
