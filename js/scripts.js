@@ -20,6 +20,7 @@ let pokemonRepository = (function () {
         let listButton = document.createElement('button');
         pokemonDisplay.classList.add('group-list-item');
         listButton.innerHTML = `<strong>${pokemon.name}</strong>`;
+        listButton.classList.add('pokemon-name');
         listButton.classList.add('selected-button');
         listButton.setAttribute('data-toggle', 'modal');
         listButton.setAttribute('data-target', '#pokemon-modal');
@@ -115,6 +116,7 @@ let pokemonRepository = (function () {
         getAll: getAll,
         loadList: loadList,
         loadDetails: loadDetails,
+        showDetails: showDetails,
     };
 })();
 
@@ -123,3 +125,21 @@ pokemonRepository.loadList().then(function () {
         pokemonRepository.addListItem(pokemon);
     });
 });
+
+// *----  SEARCH FUNCTION ----*
+function searchFunction(event) {
+    let pokemonNames = document.getElementsByClassName('pokemon-name');
+    let { value } = event.target;
+    let searchQuery = value.toLowerCase();
+    for (let pokemonName of pokemonNames) {
+        let name = pokemonName.textContent.toLowerCase();
+        if (name.includes(searchQuery)) {
+            pokemonName.closest('li').style.display = 'inline-block';
+        } else {
+            pokemonName.closest('li').style.display = 'none';
+        }
+    }
+}
+
+let search = document.getElementById('search');
+search.addEventListener('keyup', searchFunction);
