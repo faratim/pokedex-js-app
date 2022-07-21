@@ -22,5 +22,5 @@ This is a simple Pokedex app.It shows a list of 150 Pokemons loaded from externa
 
 ---
 
-Links to: [Github](https://github.com/navi5599/simple-js-app)
-, [Github Pages](https://navi5599.github.io/simple-js-app/)
+Links to: [Github](https://github.com/faratim/pokedex-js-app.git)
+, [Web App Link](https://faratim.github.io/pokedex-js-app/)
