@@ -17,7 +17,7 @@
 
 @media (max-width: 600px) {
     .nav-image {
-        max-width: 100px;
+        max-width: 90px;
     }
 }
 
@@ -101,6 +101,7 @@
     color: white;
 }
 
+/* Footer Styling */
 footer {
     background-color: rgba(2, 117, 216, 1);
 }
