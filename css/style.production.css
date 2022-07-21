@@ -15,6 +15,10 @@
     max-width: 150px;
 }
 
+.navGround {
+    background-color: rgba(2, 117, 216, 1);
+}
+
 @supports (backdrop-filter: blur(1rem)) {
     .navGround {
         background-color: rgba(2, 117, 216, 0.8);
@@ -92,8 +96,14 @@
 }
 
 footer {
-    background-color: rgba(2, 117, 216, 0.8);
-    -webkit-backdrop-filter: blur(4px);
-    backdrop-filter: blur(4px);
-    color: white;
+    background-color: rgba(2, 117, 216, 1);
+}
+
+@supports (backdrop-filter: blur(1rem)) {
+    footer {
+        background-color: rgba(2, 117, 216, 0.8);
+        -webkit-backdrop-filter: blur(4px);
+        backdrop-filter: blur(4px);
+        color: white;
+    }
 }
