@@ -61,7 +61,7 @@ let pokemonRepository = (function () {
                 return response.json();
             })
             .then(function (details) {
-                pokemon.imageUrlFront = details.sprites.front_shiny;
+                pokemon.imageUrlFront = details.sprites.other.dream_world.front_default;
                 pokemon.imageUrlBack = details.sprites.back_shiny;
                 pokemon.id = details.id;
                 pokemon.height = details.height;
@@ -83,16 +83,16 @@ let pokemonRepository = (function () {
     function showModal(pokemon) {
         let modalBody = $('.modal-body');
         let modalTitle = $('.modal-title');
-        let modalHeader = $('.modal-header');
+
         modalTitle.empty();
         modalBody.empty();
 
         let nameElement = $('<h1>' + pokemon.name + '</h1>');
 
-        let imageElementFront = $('<img class="modal-img" style="width: 30%">');
+        let imageElementFront = $('<img class="modal-img" style="width: 40%">');
         imageElementFront.attr('src', pokemon.imageUrlFront);
 
-        let imageElementBack = $('<img class="modal-img" style="width: 30%">');
+        let imageElementBack = $('<img class="modal-img" style="width: 40%">');
         imageElementBack.attr('src', pokemon.imageUrlBack);
 
         let heightElement = $('<p>' + '<strong>Height: </strong>' + pokemon.height + '</p>');
