@@ -1,28 +1,22 @@
-#Pokédex
+# ⚡️Pokédex App⚡️
 
-### Gotta Catch 'em All!
+## Gotta Catch 'em All!
 
 ---
 
 ## Introduction
 
----
-
-This is a simple Pokedex app.It shows a list of 150 Pokemons loaded from external public API : [Pokemon API](https://pokeapi.co/api/v2/pokemon/?limit=150).
-
----
+Search for your favorite Pokémon to see a picture and stats. The app shows a list of Pokémon loaded from the Pokémon API : [Pokemon API](https://pokeapi.co/api/v2/pokemon/?limit=150).
 
 ## Technologies used
-
----
 
 -   `HTML`
 -   `CSS`
 -   `Javascript`
 -   `Bootstrap v4.3.1`
--   `jQuery 3.6.0`
+-   'jQuery 3.6.0'
 
----
+## Links
 
-Links to: [Github](https://github.com/faratim/pokedex-js-app.git)
-, [Web App Link](https://faratim.github.io/pokedex-js-app/)
+-   [Github](https://github.com/faratim/pokedex-js-app.git)
+-   [Web App Link](https://faratim.github.io/pokedex-js-app/)
