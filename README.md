@@ -1,4 +1,6 @@
-# Simple POKEDEX JS App
+#Pokédex
+
+### Gotta Catch 'em All!
 
 ---
 
@@ -18,7 +20,7 @@ This is a simple Pokedex app.It shows a list of 150 Pokemons loaded from externa
 -   `CSS`
 -   `Javascript`
 -   `Bootstrap v4.3.1`
--   'jQuery 3.6.0'
+-   `jQuery 3.6.0`
 
 ---
 
