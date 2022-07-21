@@ -25,7 +25,7 @@
     background-color: rgba(2, 117, 216, 1);
 }
 
-@supports (backdrop-filter: blur(1rem)) {
+@supports ((-webkit-backdrop-filter: blur(1rem)) or (backdrop-filter: blur(1rem))) {
     .navGround {
         background-color: rgba(2, 117, 216, 0.8);
         -webkit-backdrop-filter: blur(4px);
@@ -106,7 +106,7 @@ footer {
     background-color: rgba(2, 117, 216, 1);
 }
 
-@supports (backdrop-filter: blur(1rem)) {
+@supports ((-webkit-backdrop-filter: blur(1rem)) or (backdrop-filter: blur(1rem))) {
     footer {
         background-color: rgba(2, 117, 216, 0.8);
         -webkit-backdrop-filter: blur(4px);
