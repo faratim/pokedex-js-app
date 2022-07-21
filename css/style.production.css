@@ -15,6 +15,12 @@
     max-width: 150px;
 }
 
+@media (max-width: 600px) {
+    .nav-image {
+        max-width: 100px;
+    }
+}
+
 .navGround {
     background-color: rgba(2, 117, 216, 1);
 }
